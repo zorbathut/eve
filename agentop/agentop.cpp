@@ -22,6 +22,15 @@ vector< string > tokenize(const string &in, const string &kar) {
   return oot;
 };
 
+vector< int > sti(const vector< string > &foo) {
+  int i;
+  vector< int > bar;
+  for(i = 0; i < foo.size(); i++) {
+    bar.push_back(atoi(foo[i].c_str()));
+  }
+  return bar;
+};
+
 vector<string> optize(const string &lin) {
   vector<string> rv = tokenize(lin, ";\r");
   for(int i = 0; i < rv.size(); i++) {
@@ -63,6 +72,12 @@ map<string, int> gencats(const string &catline) {
   }
   return cts;
 }
+
+struct Station {
+  string name;
+  int oid;
+  int ss;
+};
 
 int main() {
   
@@ -115,7 +130,6 @@ int main() {
     int sid = snag(cts, "serviceID");
     int sna = snag(cts, "serviceName");
     
-    int linkcount = 0;
     while(getline(mss, lin)) {
       vector<string> opts = optize(lin);
       if(opts[sna] == "Factory") {
@@ -128,6 +142,59 @@ int main() {
     }
     CHECK(reprocid != -1);
     CHECK(factoryid != -1);
-    printf("Parsed reprocid and factoryid\n", linkcount);
+    printf("Parsed reprocid and factoryid\n");
+  }
+  
+  map<int, pair<bool, bool> > services;
+  {
+    ifstream mss("raw/dbo_staOperationServices.csv");
+    string lin;
+    getline(mss, lin);
+    map<string, int> cts = gencats(lin);
+    
+    int sid = snag(cts, "operationID");
+    int sna = snag(cts, "serviceID");
+    
+    while(getline(mss, lin)) {
+      vector<int> opts = sti(optize(lin));
+      services[opts[sid]];
+      if(opts[sna] == reprocid) {
+        services[opts[sid]].first = true;
+      } else if(opts[sna] == factoryid) {
+        services[opts[sid]].second = true;
+      }
+    }
+    CHECK(reprocid != -1);
+    CHECK(factoryid != -1);
+    printf("Parsed operation services\n");
+  }
+  
+  map<int, Station> stations;
+  {
+    ifstream mss("raw/dbo_staStations.csv");
+    string lin;
+    getline(mss, lin);
+    map<string, int> cts = gencats(lin);
+    
+    int sid = snag(cts, "stationID");
+    int oid = snag(cts, "operationID");
+    int ssid = snag(cts, "solarSystemID");
+    int sname = snag(cts, "stationName");
+    
+    while(getline(mss, lin)) {
+      vector<string> sopts = optize(lin);
+      vector<int> opts = sti(sopts);
+      if(!opts[oid])
+        continue;
+      CHECK(!stations.count(opts[sid]));
+      CHECK(services.count(opts[oid]));
+      CHECK(solarinfo.count(opts[ssid]));
+      stations[opts[sid]].oid = opts[oid];
+      stations[opts[sid]].ss = opts[ssid];
+      stations[opts[sid]].name = sopts[sname];
+    }
+    CHECK(reprocid != -1);
+    CHECK(factoryid != -1);
+    printf("Parsed %d stations\n", stations.size());
   }
 }
