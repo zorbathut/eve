@@ -7,15 +7,16 @@
 
 using namespace std;
 
-const int t1 = 0;
-const int t2 = 8;
+const int t1 = 3;
+const int t2 = 0;
 
 const string names[] = { "EM", "Thermal", "Kinetic", "Explosive", "Invincibility" };
 
-const int base[] = { 0, 20, 40, 60 };
+//const int base[] = { 0, 20, 40, 60 };
+const int base[] = { 10, 28, 46, 64 };
 
-float dps[] = { 0, 0, 0, 0 };
-const float generaldps = 100;
+float dps[] = { 0, 195, 18, 55 };
+const float generaldps = 20;
 
 const float stack[] = {1.0, 0.8691, 0.5706, 0.2830, 0.1060, 0.03000, 0.006410, 0.001031};
 
