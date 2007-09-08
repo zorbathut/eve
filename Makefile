@@ -10,3 +10,6 @@ agentop.exe: agentop/agentop.o raw/dbo_mapSolarSystems.csv raw/dbo_mapSolarSyste
 
 run: agentop.exe
 	agentop.exe
+
+download:
+	wget "http://eve-central.com/home/quicklook.html?sethours=10000&setminQ=1000000&typeid=34" -O ecd.txt

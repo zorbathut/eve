@@ -5,10 +5,80 @@
 #include <fstream>
 #include <map>
 #include <set>
+#include <deque>
+#include <stdarg.h>
+#include <windows.h>
 
 #define CHECK(x) do { if(!(x)) { printf("Error at %s:%d - %s\n", __FILE__, __LINE__, #x); *(int*)0 = 0; } } while(0)
 
 using namespace std;
+
+class Filedescr {
+public:
+    string fname;
+    bool directory;
+};
+
+bool operator<( const Filedescr &lhs, const Filedescr &rhs ) {
+    return lhs.fname < rhs.fname; };
+
+vector< Filedescr > getDirList( const string &dr ) {
+    char buf[ 256 ];
+    sprintf( buf, "%s\\*", dr.c_str() );
+    WIN32_FIND_DATA wfd;
+    HANDLE hnd = FindFirstFile( buf, &wfd );
+    vector< Filedescr > oot;
+    if( hnd == INVALID_HANDLE_VALUE )
+        return oot;
+    do {
+        Filedescr desc;
+        desc.fname = wfd.cFileName;
+        desc.directory = ( ( wfd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY ) != 0 );
+        if( desc.fname == ".." || desc.fname == "." )
+            continue;
+        oot.push_back( desc );
+    } while( FindNextFile( hnd, &wfd ) );
+	FindClose( hnd );
+    //sort( oot.begin(), oot.end() );
+    return oot;
+};
+
+static bool inthread = false;
+string StringPrintf(const char *bort, ...) {
+  CHECK(!inthread);
+  inthread = true;
+  
+  static vector< char > buf(2);
+  va_list args;
+
+  int done = 0;
+  bool noresize = false;
+  do {
+    if(done && !noresize)
+      buf.resize(buf.size() * 2);
+    va_start(args, bort);
+    done = vsnprintf(&(buf[0]), buf.size() - 1,  bort, args);
+    if(done >= (int)buf.size()) {
+      CHECK(noresize == false);
+      CHECK(buf[buf.size() - 2] == 0);
+      buf.resize(done + 2);
+      done = -1;
+      noresize = true;
+    } else {
+      CHECK(done < (int)buf.size());
+    }
+    va_end(args);
+  } while(done == buf.size() - 1 || done == -1);
+
+  CHECK(done < (int)buf.size());
+
+  string rv = string(buf.begin(), buf.begin() + done);
+  
+  CHECK(inthread);
+  inthread = false;
+  
+  return rv;
+};
 
 vector< string > tokenize(const string &in, const string &kar) {
   string::const_iterator cp = in.begin();
@@ -92,6 +162,7 @@ struct Agent {
 struct Solarsystem {
   string name;
   int security;
+  string region;
   vector<int> stations;
   vector<int> links;
 };
@@ -154,6 +225,7 @@ void countAgents(const Station &station, map<int, Agent> &agents, Scoring *scori
 int main() {
   
   map<int, Solarsystem> solarinfo;
+  map<string, int> solarname;
   {
     ifstream mss("raw/dbo_mapSolarSystems.csv");
     string lin;
@@ -163,6 +235,7 @@ int main() {
     int ssid = snag(cts, "solarSystemID");
     int ssname = snag(cts, "solarSystemName");
     int security = snag(cts, "security");
+    int region = snag(cts, "regionID");
     
     while(getline(mss, lin)) {
       vector<string> sopts = optize(lin);
@@ -170,6 +243,10 @@ int main() {
       CHECK(!solarinfo.count(opts[ssid]));
       solarinfo[opts[ssid]].name = sopts[ssname];
       solarinfo[opts[ssid]].security = securize(sopts[security]);
+      solarinfo[opts[ssid]].region = sopts[region];
+      CHECK(!solarname.count(sopts[ssname]));
+      solarname[sopts[ssname]] = opts[ssid];
+      solarname[sopts[ssname]] = opts[ssid];
     }
     printf("Parsed %d solar systems\n", solarinfo.size());
   }
@@ -321,64 +398,188 @@ int main() {
     printf("Parsed %d agents\n", agents.size());
   }
   
-  // Various rewards:
-  // Level X agent: 40/60/80/100 points
-  // High-QL agent: +40 points
-  // manufacturing plant there: +400 points
-  // reproc plant there: +200 points
-  // agents in same system: half value
-  // reproc plant in same system: half value if there isn't one already
-  // agents in adjacent systems: 1/4 value
-  // reproc plant in adjacent systems: 1/4 value if there isn't one already
-  // security standing?
-  
-  vector<Scoring> scoring;
-  
-  for(map<int, Station>::const_iterator itr = stations.begin(); itr != stations.end(); itr++) {
+  if(0) {
+    // Various rewards:
+    // Level X agent: 40/60/80/100 points
+    // High-QL agent: +40 points
+    // manufacturing plant there: +400 points
+    // reproc plant there: +200 points
+    // agents in same system: half value
+    // reproc plant in same system: half value if there isn't one already
+    // agents in adjacent systems: 1/4 value
+    // reproc plant in adjacent systems: 1/4 value if there isn't one already
+    // security standing?
     
-    const Station &stat = itr->second;
-    const Solarsystem &ss = solarinfo[stat.ss];
+    vector<Scoring> scoring;
     
-    Scoring score(stat.name);
-    
-    if(services[stat.oid].second)
-      score.addscore("Has manufacturing plant", 400);
-    
-    bool hasrep = false;
-    
-    if(services[stat.oid].first) {
-      score.addscore("Has reprocessing plant", 400);
-      hasrep = true;
-    }
-    
-    countAgents(stat, agents, &score, 4, "in station");
-    
-    for(int i = 0; i < ss.stations.size(); i++) {
-      if(!hasrep && services[stations[ss.stations[i]].oid].first) {
-        score.addscore("Has reprocessing plant in system", 300);
+    for(map<int, Station>::const_iterator itr = stations.begin(); itr != stations.end(); itr++) {
+      
+      const Station &stat = itr->second;
+      const Solarsystem &ss = solarinfo[stat.ss];
+      
+      Scoring score(stat.name);
+      
+      if(services[stat.oid].second)
+        score.addscore("Has manufacturing plant", 400);
+      
+      bool hasrep = false;
+      
+      if(services[stat.oid].first) {
+        score.addscore("Has reprocessing plant", 400);
         hasrep = true;
       }
-      if(&stations[ss.stations[i]] != &stat)
-        countAgents(stations[ss.stations[i]], agents, &score, 2, "in system");
-    }
-    
-    for(int i = 0; i < ss.links.size(); i++) {
-      const Solarsystem &tss = solarinfo[ss.links[i]];
-      for(int i = 0; i < tss.stations.size(); i++) {
-        if(!hasrep && services[stations[tss.stations[i]].oid].first) {
-          score.addscore("Has reprocessing plant adjacent", 200);
+      
+      countAgents(stat, agents, &score, 4, "in station");
+      
+      for(int i = 0; i < ss.stations.size(); i++) {
+        if(!hasrep && services[stations[ss.stations[i]].oid].first) {
+          score.addscore("Has reprocessing plant in system", 300);
           hasrep = true;
-          break;
         }
-        countAgents(stations[tss.stations[i]], agents, &score, 1, "adjacent");
+        if(&stations[ss.stations[i]] != &stat)
+          countAgents(stations[ss.stations[i]], agents, &score, 2, "in system");
       }
+      
+      for(int i = 0; i < ss.links.size(); i++) {
+        const Solarsystem &tss = solarinfo[ss.links[i]];
+        for(int i = 0; i < tss.stations.size(); i++) {
+          if(!hasrep && services[stations[tss.stations[i]].oid].first) {
+            score.addscore("Has reprocessing plant adjacent", 200);
+            hasrep = true;
+            break;
+          }
+          countAgents(stations[tss.stations[i]], agents, &score, 1, "adjacent");
+        }
+      }
+      
+      scoring.push_back(score);
     }
     
-    scoring.push_back(score);
+    sort(scoring.begin(), scoring.end());
+    reverse(scoring.begin(), scoring.end());
+    for(int i = 0; i < 20; i++)
+      scoring[i].printscore();
+  }  
+  
+  {
+    set<string> allowed;
+    set<string> regions;
+    deque<int> id;
+    id.push_back(solarname["Jita"]);
+    while(id.size()) {
+      int tid = id[0];
+      id.pop_front();
+      if(allowed.count(solarinfo[tid].name))
+        continue;
+      if(solarinfo[tid].security < 50)
+        continue;
+      allowed.insert(solarinfo[tid].name);
+      regions.insert(solarinfo[tid].region);
+      for(int i = 0; i < solarinfo[tid].links.size(); i++)
+        id.push_back(solarinfo[tid].links[i]);
+    }
+    
+    printf("found %d allowed systems, %d allowed regions\n", allowed.size());
+    
+    vector<string> rv;
+    ifstream ifs("ecd.txt");
+    string borf;
+    while(getline(ifs, borf)) {
+      if(borf == " <td>") {
+        getline(ifs, borf);
+        getline(ifs, borf);
+        string aname = tokenize(borf, " ")[0];
+        getline(ifs, borf);
+        getline(ifs, borf);
+        getline(ifs, borf);
+        getline(ifs, borf);
+        string prik = tokenize(borf, "<> /td")[0];
+        if(!allowed.count(aname))
+          continue;
+        rv.push_back(StringPrintf("%s: %d (%s)", prik.c_str(), solarinfo[solarname[aname]].security, aname.c_str()));
+      }
+      if(borf == "<h3>Buy Orders</h3>")
+        break;
+    }
+    
+    reverse(rv.begin(), rv.end());
+    for(int i = 0; i < rv.size(); i++)
+      printf("%s\n", rv[i].c_str());
+    
+    const string path = "C:\\Documents and Settings\\zorba\\My Documents\\EVE\\logs\\Marketlogs";
+    vector<Filedescr> fd = getDirList(path);
+    for(int i = 0; i < fd.size(); i++) {
+      ifstream ifs((path + "\\" + fd[i].fname).c_str());
+      
+      map<int, int> avail;
+      map<int, float> cost;
+      string beef;
+      getline(ifs, beef);
+      while(getline(ifs, beef)) {
+        vector<string> vals = tokenize(beef, ",");
+        if(vals[7] != "False")
+          continue;
+        int sid = atoi(vals[12].c_str());
+        float tcost = atof(vals[0].c_str());
+        int quant = atoi(vals[1].c_str());
+        avail[sid] += quant;
+        if(cost.count(sid))
+          cost[sid] = min(cost[sid], tcost);
+        else
+          cost[sid] = tcost;
+      }
+      
+      vector<pair<pair<float, int>, string> > dat;
+      for(map<int, int>::const_iterator itr = avail.begin(); itr != avail.end(); itr++) {
+        if(itr->second < 1000000)
+          continue;
+        if(!allowed.count(solarinfo[itr->first].name))
+          continue;
+        dat.push_back(make_pair(make_pair(cost[itr->first], itr->second), solarinfo[itr->first].name));
+      }
+      sort(dat.begin(), dat.end());
+      reverse(dat.begin(), dat.end());
+      
+      for(int i = 0; i < dat.size(); i++)
+        printf("%f: %d (%s)\n", dat[i].first.first, dat[i].first.second, dat[i].second.c_str());
+    }
+    
+    {
+      const string start = "Eystur";
+      vector<string> route;
+      set<string> touchedregions;
+      route.push_back(start);
+      touchedregions.insert(solarinfo[solarname[start]].region);
+      string curpos = "Josekorn";
+      while(touchedregions.size() != regions.size()) {
+        deque<int> deq;
+        set<int> binthere;
+        CHECK(solarname.count(curpos));
+        deq.push_back(solarname[curpos]);
+        while(deq.size()) {
+          int ite = deq[0];
+          deq.pop_front();
+          if(binthere.count(ite))
+            continue;
+          if(solarinfo[ite].security < 50)
+            continue;
+          binthere.insert(ite);
+          if(!touchedregions.count(solarinfo[ite].region)) {
+            route.push_back(solarinfo[ite].name);
+            curpos = solarinfo[ite].name;
+            touchedregions.insert(solarinfo[ite].region);
+            break;
+          }
+          for(int i = 0; i < solarinfo[ite].links.size(); i++) {
+            deq.push_back(solarinfo[ite].links[i]);
+          }
+        }
+      }
+      
+      printf("Route begin:\n");
+      for(int i = 0; i < route.size(); i++)
+        printf("%s\n", route[i].c_str());
+    }
   }
   
-  sort(scoring.begin(), scoring.end());
-  reverse(scoring.begin(), scoring.end());
-  for(int i = 0; i < 20; i++)
-    scoring[i].printscore();
 }
