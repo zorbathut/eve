@@ -13,7 +13,7 @@
 
 using namespace std;
 
-const long long thresh = 1000000;
+const long long thresh = 5000000;
 
 map<pair<string, float>, long long> distill(const map<pair<string, float>, long long> &v) {
   map<pair<string, float>, long long> rv = v;
@@ -299,6 +299,7 @@ int main() {
     printf("Parsed %d links\n", linkcount);
   }
   
+  /*
   int reprocid = -1;
   int factoryid = -1;
   {
@@ -427,6 +428,7 @@ int main() {
     printf("Parsed %d agents\n", agents.size());
   }
   
+  
   if(0) {
     // Various rewards:
     // Level X agent: 40/60/80/100 points
@@ -488,7 +490,7 @@ int main() {
     reverse(scoring.begin(), scoring.end());
     for(int i = 0; i < 20; i++)
       scoring[i].printscore();
-  }  
+  }  */
   
   {
     set<string> allowed;
@@ -558,7 +560,9 @@ int main() {
     const string path = "C:\\Documents and Settings\\zorba\\My Documents\\EVE\\logs\\Marketlogs";
     vector<Filedescr> fd = getDirList(path);
     for(int i = 0; i < fd.size(); i++) {
+      printf("Parsing file\n");
       ifstream ifs((path + "\\" + fd[i].fname).c_str());
+      CHECK(ifs);
       
       map<pair<string, float>, long long> dat;
       
@@ -586,43 +590,6 @@ int main() {
       
       for(int i = 0; i < vl.size(); i++)
         printf("%.2f: %s (%LLd)\n", vl[i].first.first, vl[i].first.second.c_str(), vl[i].second);
-    }
-    
-    {
-      const string start = "Jita";
-      vector<string> route;
-      set<string> touchedregions;
-      route.push_back(start);
-      touchedregions.insert(solarinfo[solarname[start]].region);
-      string curpos = start;
-      while(touchedregions.size() != regions.size()) {
-        deque<int> deq;
-        set<int> binthere;
-        CHECK(solarname.count(curpos));
-        deq.push_back(solarname[curpos]);
-        while(deq.size()) {
-          int ite = deq[0];
-          deq.pop_front();
-          if(binthere.count(ite))
-            continue;
-          if(solarinfo[ite].security < 50)
-            continue;
-          binthere.insert(ite);
-          if(!touchedregions.count(solarinfo[ite].region)) {
-            route.push_back(solarinfo[ite].name);
-            curpos = solarinfo[ite].name;
-            touchedregions.insert(solarinfo[ite].region);
-            break;
-          }
-          for(int i = 0; i < solarinfo[ite].links.size(); i++) {
-            deq.push_back(solarinfo[ite].links[i]);
-          }
-        }
-      }
-      
-      printf("Route begin:\n");
-      for(int i = 0; i < route.size(); i++)
-        printf("%s\n", route[i].c_str());
     }
   }
   

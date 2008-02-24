@@ -8,7 +8,7 @@
 using namespace std;
 
 const int t1 = 0;
-const int t2 = 4;
+const int t2 = 5;
 
 const string names[] = { "EM", "Thermal", "Kinetic", "Explosive", "Invincibility" };
 

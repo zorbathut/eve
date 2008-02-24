@@ -321,17 +321,25 @@ int main() {
         id.push_back(solarinfo[tid].links[i]);
     }
     
+    //regions.erase(regions.find(solarinfo[solarname["Jarkkolen"]].region));
+    //regions.erase(regions.find(solarinfo[solarname["Hati"]].region));
+    //regions.erase(regions.find(solarinfo[solarname["Molea"]].region));
+    regions.erase(regions.find(solarinfo[solarname["Stacmon"]].region));  // I forget what region this is but it's the one way off in bumfuck nowhere
+    regions.erase(regions.find(solarinfo[solarname["Tar"]].region));  // Genesis is crap
+    
     printf("found %d allowed systems, %d allowed regions\n", allowed.size(), regions.size());
     
-    CHECK(regions.size() == REGIONCOUNT);
-    CHECK(allowed.size() == SYSTEMCOUNT);
-    const string start = "Jita";
+    CHECK(regions.size() <= REGIONCOUNT);
+    CHECK(allowed.size() <= SYSTEMCOUNT);
+    const string start = "Stacmon";
+    CHECK(allowed.count(start));
     
     {
       vector<string> route;
       set<string> touchedregions;
       route.push_back(start);
-      touchedregions.insert(solarinfo[solarname[start]].region);
+      if(regions.count(solarinfo[solarname[start]].region))
+        touchedregions.insert(solarinfo[solarname[start]].region);
       string curpos = start;
       while(touchedregions.size() != regions.size()) {
         deque<int> deq;
@@ -379,7 +387,8 @@ int main() {
         int q = syslookup.size();
         syslookup[*itr] = q;
         rsyslookup[q] = *itr;
-        sysregion[q] = reglookup[solarinfo[solarname[*itr]].region];
+        if(reglookup.count(solarinfo[solarname[*itr]].region))
+          sysregion[q] = reglookup[solarinfo[solarname[*itr]].region];
       }
       
       vector<vector<int> > links(syslookup.size());
@@ -394,8 +403,14 @@ int main() {
         }
       }
       
+      printf("start at %d, %s\n", syslookup[start], rsyslookup[syslookup[start]].c_str());
       deque<pair<short, int> > pos;
-      pos.push_back(make_pair(syslookup[start], 1 << reglookup[solarinfo[solarname[start]].region]));
+      unsigned long home;
+      if(regions.count(solarinfo[solarname[start]].region))
+        home = 1 << reglookup[solarinfo[solarname[start]].region];
+      else
+        home = 0;
+      pos.push_back(make_pair(syslookup[start], home));
       avail[pos.front().first][pos.front().second] = 0;
       
       int final = -1;
@@ -406,23 +421,30 @@ int main() {
         
         CHECK(avail[ite.first][ite.second] != 254);
         
-        if(ite.second == (1 << REGIONCOUNT) - 1) {
+        if(ite.second == (1 << regions.size()) - 1) {
           final = ite.first;
           break;
         }
         
         for(int i = 0; i < links[ite.first].size(); i++) {
-          if(avail[links[ite.first][i]][ite.second | (1 << sysregion[links[ite.first][i]])] > avail[ite.first][ite.second] + 1) {
-            avail[links[ite.first][i]][ite.second | (1 << sysregion[links[ite.first][i]])] = avail[ite.first][ite.second] + 1;
-            pos.push_back(make_pair(links[ite.first][i], ite.second | (1 << sysregion[links[ite.first][i]])));
+          if(sysregion.count(links[ite.first][i])) {
+            if(avail[links[ite.first][i]][ite.second | (1 << sysregion[links[ite.first][i]])] > avail[ite.first][ite.second] + 1) {
+              avail[links[ite.first][i]][ite.second | (1 << sysregion[links[ite.first][i]])] = avail[ite.first][ite.second] + 1;
+              pos.push_back(make_pair(links[ite.first][i], ite.second | (1 << sysregion[links[ite.first][i]])));
+            }
+          } else {
+            if(avail[links[ite.first][i]][ite.second] > avail[ite.first][ite.second] + 1) {
+              avail[links[ite.first][i]][ite.second] = avail[ite.first][ite.second] + 1;
+              pos.push_back(make_pair(links[ite.first][i], ite.second));
+            }
           }
         }
       }
       
-      printf("Done, terminates at %d cost %d\n", final, avail[final][(1 << REGIONCOUNT) - 1]);
-      pair<short, int> loc = make_pair(final, (1 << REGIONCOUNT) - 1);
+      printf("Done, terminates at %d cost %d\n", final, avail[final][(1 << regions.size()) - 1]);
+      pair<short, int> loc = make_pair(final, (1 << regions.size()) - 1);
       vector<string> rstat;
-      while(loc.first != syslookup[start] && loc.second != 1 << reglookup[solarinfo[solarname[start]].region]) {
+      while(loc.first != syslookup[start] || loc.second != home) {
         pair<short, int> nloc = loc;
         for(int i = 0; i < links[loc.first].size(); i++) {
           if(avail[links[loc.first][i]][loc.second] == avail[loc.first][loc.second] - 1) {
@@ -437,9 +459,9 @@ int main() {
         CHECK(nloc != loc);
         
         if(loc.second != nloc.second) {
-          rstat.push_back(StringPrintf("%s (region waypoint)", rsyslookup[loc.first].c_str()));
+          rstat.push_back(StringPrintf("%s (region %s waypoint)", rsyslookup[loc.first].c_str(), solarinfo[solarname[rsyslookup[loc.first]]].region.c_str()));
         } else {
-          rstat.push_back(StringPrintf("%s", rsyslookup[loc.first].c_str()));
+          //rstat.push_back(StringPrintf("%s", rsyslookup[loc.first].c_str()));
         }
         
         loc = nloc;

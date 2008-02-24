@@ -11,8 +11,14 @@ agentop.exe: agentop/agentop.o raw/dbo_mapSolarSystems.csv raw/dbo_mapSolarSyste
 pather.exe: agentop/pather.o raw/dbo_mapSolarSystems.csv raw/dbo_mapSolarSystemJumps.csv
 	nice g++ -o $@ agentop/pather.o
 
-run: agentop.exe
+implantlist.exe: implantlist.o
+	nice g++ -o $@ implantlist.o
+
+agentop: agentop.exe
 	agentop.exe
 
 download:
 	wget "http://eve-central.com/home/quicklook.html?sethours=10000&setminQ=1&typeid=34" -O ecd.txt
+
+implants: implantlist.exe
+	implantlist.exe

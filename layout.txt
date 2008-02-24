@@ -1,0 +1,233 @@
+[SIZE="5"][b]Want implants or hardwirings? Want them cheap and fast? Buy from me![/b][/SIZE]
+
+[SIZE="4"]Standard implant sets, in-stock with 24 hour guarantee[/size]
+Delivery to [b]KZF, 77s, FAT, QY6[/b] - please specify which when ordering.
+
+[INDENT]+1 without charisma: 2.3m
++1 full set: 2.5m
++1 single implants: 800k
+
++2 without charisma: 22m
++2 full set: 24m
++2 single implants: 6m
+
++3 without charisma: 52m
++3 full set: 65m
++3 single implants: 15m
+
++4 without charisma: 115m
++4 full set: 140m
++4 single implants: 33m
+(+4 implants require Cybernetics 4.)
+
++5 without charisma: 500m
++5 full set: 600m
++5 single implants: 140m
+(+5 implants may take shipping time as I do not keep them in stock. +5s also require Cybernetics 5.)[/INDENT]
+
+[SIZE="4"]Standard orders[/size]
+
+[indent]To make an order, just post here with what you want, whether you want it in KZF, 77s, FAT, or QY6, and who you want it contracted to. I guarantee normal orders will be sent within 24 hours. If not, you'll get a 10% discount, and feel free to cancel your normal order at any time for any reason.
+
+If you don't tell me where you want it I'll put it wherever I feel like, and if you don't tell me who it should be contracted to I'll send it to your username or the first character listed that you own. If this wasn't what you wanted, it doesn't count towards the 24-hour limit :v:
+
+If you want a little extra adventure in your life, PM me with your order! I might see it or I might not. Who knows? It's a gamble! You can achieve a similar thing by sending me an eve-mail. Guarantees are waived if you do either of those.
+
+All contracts are set for 14 days, since I've never come even near running out of slots.
+
+If you just want one of the above items, you can probably stop reading now.[/indent]
+
+
+
+[SIZE="4"]Hardwirings galore![/size]
+
+[indent]I'm currently not keeping hardwirings in stock, so any hardwiring will take a bit to bring down. This may change once I figure out what the most popular ones are. Prices listed here are [i]not[/i] final - hardwiring prices tend to be volatile. If the price jumps enough that I'd be losing money I'll let you know and give you a new price, otherwise I'll just sell you one at the original price (and change the listed price.) If you think something I have here is way too expensive, let me know - sometimes prices drop too.
+
+I'm not listing all hardwirings here, only the ones that seemed most useful to me when skimming. There's a lot of weird specialty stuff that I am not including (3% target painter capacitor need reduction, for example :v:). Every 3% implant here comes in a 5% flavor also, which generally costs around 180m (ask for quote) and requires Cybernetics ~2 levels higher. 6% implants have a similar improved 10% version, 2% implants have a 4% version.
+
+[b]If you think a price is significantly too high, tell me.[/b] These prices change constantly and I don't update the entire list every week, so I might very well say "oh hay actually that's half the price now, thanks for telling me".
+
+[b]Sorted by slot[/b]
+[indent]
+Slot 6
+[indent]Gunslinger SX-1 - 3% small projectile damage bonus, Cyber 1 - 1m
+Deadeye ZGS100 - 3% small hybrid damage bonus, Cyber 1 - 1m
+Deadeye ZGS1000 - 5% small hybrid damage bonus, Cyber 3 - 40m
+Lancer G1-Alpha - 3% small energy damage bonus, Cyber 1 - 1m
+Snapshot ZMT1000 - 3% torpedo damage bonus, Cyber 3 - 40m
+Snapshot ZMU1000 - 3% cruise damage bonus, Cyber 3 - 40m
+Squire PG4 - 3% powergrid bonus, Cyber 2 - 35m
+Gypsy KMB-50 - 3% CPU bonus, Cyber 3 - 35m
+Gnome KTA100 - 3% launcher CPU need reduction, Cyber 4 - 30m
+Noble ZET100 - 3% repair system duration reduction, Cyber 2 - 40m
+Squire CR4 - 3% cap recharge time reduction, Cyber 1 - 30m
+Rogue AY-1 - 3% agility bonus, Cyber 1 - 22m
+Prospector PPF-1 - 6% scan deviation reduction, Cyber 3 - 40m
+Beancounter I50 - 3% speed research time reduction, Cyber 3 - 14m[/indent]
+
+Slot 7
+[indent]Gunslinger AX-1 - 3% turret tracking speed bonus, Cyber 1 - 15m
+Deadeye ZGC100 - 3% turret falloff bonus, Cyber 1 - 10m
+Lancer G1-Beta - 3% turret cap need reduction, Cyber 1 - 4m
+Snapshot ZME1000 - 3% heavy assault missile damage bonus, Cyber 2 - 45m
+Snapshot ZMH1000 - 3% heavy missile damage bonus, Cyber 2 - 45m
+Deadeye ZMC100 - 3% missile flight range bonus, Cyber 2 - 10m
+Deadeye ZML100 - 3% missile velocity bonus, Cyber 2 - 21m
+Gnome KVA1000 - 3% shield capacity bonus, Cyber 1 - 6m
+Noble ZET200 - 3% repair system capacitor reduction, Cyber 1 - 1m
+Rogue CY-1 - 3% speed bonus, Cyber 1 - 22m
+Prospector PPG-1 - 3% scan strength bonus, Cyber 3 - 40m
+Beancounter J50 - 3% efficiency research time reduction, Cyber 3 - 11m[/indent]
+
+Slot 8
+[indent]Gunslinger MX-1 - 3% medium projectile damage bonus, Cyber 2 - 25m
+Gunslinger MX-2 - 5% medium projectile damage bonus, Cyber 4 - 21m
+Deadeye ZGM100 - 3% medium hybrid damage bonus, Cyber 2 - 9m
+Deadeye ZGM1000 - 5% medium hybrid damage bonus, Cyber 4 - 3m
+Lancer G1-Gamma - 3% medium energy damage bonus, Cyber 2 - 6m
+Lancer G2-Gamma - 5% medium energy damage bonus, Cyber 4 - 6m
+Squire CC4 - 3% capacitor bonus, Cyber 2 - 30m
+Rogue DY-1 - 3% afterburner cap need reduction, Cyber 2 - 1m
+Zor's Custom Navigation Hyper-Link - 5% afterburner/MWD speed boost bonus, Cyber 4 - 40m
+Prospector PPH-1 - 6% scan duration reduction, Cyber 3 - 40m
+Beancounter F50 - 2% manufacturing time reduction, Cyber 3 - 13m
+Beancounter F60 - 4% manufacturing time reduction, Cyber 5 - 150m
+Beancounter H50 - 2% refinery waste reduction, Cyber 3 - 21m
+Beancounter H60 - 4% refinery waste reduction, Cyber 5 - 120m
+Beancounter K50 - 3% blueprint copy time reduction, Cyber 3 - 16m[/indent]
+
+Slot 9
+[indent]Gunslinger CX-1 - 3% turret damage bonus, Cyber 2 - 30m
+Deadeye ZGA100 - 3% turret optimal range bonus, Cyber 2 - 3m
+Lancer G1-Delta - 3% turret ROF bonus, Cyber 2 - 24m
+Snapshot ZMN1000 - 3% standard missile damage bonus, Cyber 2 - 50m (very low availability)
+Snapshot ZMR1000 - 3% rocket damage bonus, Cyber 2 - 50m (very low availability)
+Deadeye ZMS100 - 3% explosion velocity bonus, Cyber 4 - 18m
+Gnome KYA1000 - 3% shield recharge time reduction, Cyber 3 - 4m
+Noble ZET400 - 3% repair system amount bonus, Cyber 2 - 34m
+Rogue GY-1 - 3% MWD cap need reduction, Cyber 2 - 11m
+Prospector PPY-1 - 5% salvage retrieval chance bonus, Cyber 3 - 40m[/indent]
+
+Slot 10
+[indent]Gunslinger LX-1 - 3% large projectile damage bonus, Cyber 3 - 25m
+Deadeye ZGL100 - 3% large hybrid damage bonus, Cyber 3 - 50m
+Lancer G1-Epsilon - 3% large energy damage bonus, Cyber 3 - 42m
+Gnome KZA1000 - 3% turret CPU need reduction, Cyber 3 - 4m
+Deadeye ZMM100 - 3% missile launcher ROF bonus, Cyber 4 - 23m
+Noble ZET500 - 3% armor HP bonus, Cyber 3 - 8m
+Rogue MY-1 - 3% AB/MWD speed increase bonus, Cyber 3 - 24m
+Prospector PPZ-1 - 5% salvage/hacking/archaeology cycle time reduction, Cyber 3 - 40m
+Highwall HX-1 - 3% mining yield bonus, Cyber 3 - 25m
+Highwall HX-2 - 5% mining yield bonus, Cyber 5 - 115m[/indent]
+[/indent]
+
+
+[b]Sorted by use[/b]
+[indent]
+Turret damage
+[indent]Slot 9: Gunslinger CX-1 - 3% turret damage bonus, Cyber 2 - 30m
+Slot 9: Lancer G1-Delta - 3% turret ROF bonus, Cyber 2 - 24m
+
+Slot 6: Gunslinger SX-1 - 3% small projectile damage bonus, Cyber 1 - 1m
+Slot 6: Deadeye ZGS100 - 3% small hybrid damage bonus, Cyber 1 - 1m
+Slot 6: Deadeye ZGS1000 - 5% small hybrid damage bonus, Cyber 3 - 40m
+Slot 6: Lancer G1-Alpha - 3% small energy damage bonus, Cyber 1 - 1m
+Slot 8: Gunslinger MX-1 - 3% medium projectile damage bonus, Cyber 2 - 25m
+Slot 8: Gunslinger MX-2 - 5% medium projectile damage bonus, Cyber 4 - 21m
+Slot 8: Deadeye ZGM100 - 3% medium hybrid damage bonus, Cyber 2 - 9m
+Slot 8: Deadeye ZGM1000 - 5% medium hybrid damage bonus, Cyber 4 - 3m
+Slot 8: Lancer G1-Gamma - 3% medium energy damage bonus, Cyber 2 - 4m
+Slot 8: Lancer G2-Gamma - 5% medium energy damage bonus, Cyber 4 - 6m
+Slot 10: Gunslinger LX-1 - 3% large projectile damage bonus, Cyber 3 - 25m
+Slot 10: Deadeye ZGL100 - 3% large hybrid damage bonus, Cyber 3 - 50m
+Slot 10: Lancer G1-Epsilon - 3% large energy damage bonus, Cyber 3 - 42m[/indent]
+
+Missile damage
+[indent]Slot 10: Deadeye ZMM100 - 3% missile launcher ROF bonus, Cyber 4 - 23m
+
+Slot 6: Snapshot ZMT1000 - 3% torpedo damage bonus, Cyber 3 - 40m
+Slot 6: Snapshot ZMU1000 - 3% cruise damage bonus, Cyber 3 - 40m
+Slot 7: Snapshot ZME1000 - 3% heavy assault missile damage bonus, Cyber 2 - 45m
+Slot 7: Snapshot ZMH1000 - 3% heavy missile damage bonus, Cyber 2 - 45m
+Slot 9: Snapshot ZMN1000 - 3% standard missile damage bonus, Cyber 2 - 50m (very low availability)
+Slot 9: Snapshot ZMR1000 - 3% rocket damage bonus, Cyber 2 - 50m (very low availability)[/indent]
+
+Weapon support
+[indent]Slot 7: Gunslinger AX-1 - 3% turret tracking speed bonus, Cyber 1 - 15m
+Slot 7: Deadeye ZGC100 - 3% turret falloff bonus, Cyber 1 - 10m
+Slot 7: Lancer G1-Beta - 3% turret cap need reduction, Cyber 1 - 4m
+Slot 9: Deadeye ZGA100 - 3% turret optimal range bonus, Cyber 2 - 3m
+
+Slot 7: Deadeye ZMC100 - 3% missile flight range bonus, Cyber 2 - 10m
+Slot 7: Deadeye ZML100 - 3% missile velocity bonus, Cyber 2 - 21m
+Slot 9: Deadeye ZMS100 - 3% explosion velocity bonus, Cyber 4 - 18m[/indent]
+
+Tanking
+[indent]Slot 6: Squire CR4 - 3% cap recharge time reduction, Cyber 1 - 30m
+Slot 8: Squire CC4 - 3% capacitor bonus, Cyber 2 - 30m
+
+Slot 7: Gnome KVA1000 - 3% shield capacity bonus, Cyber 1 - 6m
+Slot 9: Gnome KYA1000 - 3% shield recharge time reduction, Cyber 3 - 4m
+
+Slot 6: Noble ZET100 - 3% repair system duration reduction, Cyber 2 - 40m
+Slot 7: Noble ZET200 - 3% repair system capacitor reduction, Cyber 1 - 1m
+Slot 9: Noble ZET400 - 3% repair system amount bonus, Cyber 2 - 34m
+Slot 10: Noble ZET500 - 3% armor HP bonus, Cyber 3 - 8m[/indent]
+
+Fitting
+[indent]Slot 6: Squire PG4 - 3% powergrid bonus, Cyber 2 - 35m
+Slot 6: Gypsy KMB-50 - 3% CPU bonus, Cyber 3 - 35m
+Slot 6: Gnome KTA100 - 3% launcher CPU need reduction, Cyber 4 - 30m
+Slot 10: Gnome KZA1000 - 3% turret CPU need reduction, Cyber 3 - 4m[/indent]
+
+Scanning/exploration
+[indent]Slot 6: Prospector PPF-1 - 6% scan deviation reduction, Cyber 3 - 40m
+Slot 7: Prospector PPG-1 - 3% scan strength bonus, Cyber 3 - 40m
+Slot 8: Prospector PPH-1 - 6% scan duration reduction, Cyber 3 - 40m
+Slot 9: Prospector PPY-1 - 5% salvage retrieval chance bonus, Cyber 3 - 40m
+Slot 10: Prospector PPZ-1 - 5% salvage/hacking/archaeology cycle time reduction, Cyber 3 - 40m[/indent]
+
+Industry
+[indent]Slot 6: Beancounter I50 - 3% speed research time reduction, Cyber 3 - 14m
+Slot 7: Beancounter J50 - 3% efficiency research time reduction, Cyber 3 - 11m
+Slot 8: Beancounter F50 - 2% manufacturing time reduction, Cyber 3 - 13m
+Slot 8: Beancounter F60 - 4% manufacturing time reduction, Cyber 5 - 150m
+Slot 8: Beancounter H50 - 2% refinery waste reduction, Cyber 3 - 21m
+Slot 8: Beancounter H60 - 4% refinery waste reduction, Cyber 5 - 120m
+Slot 8: Beancounter K50 - 3% blueprint copy time reduction, Cyber 3 - 16m
+
+Slot 10: Highwall HX-1 - 3% mining yield bonus, Cyber 3 - 25m
+Slot 10: Highwall HX-2 - 5% mining yield bonus, Cyber 5 - 115m[/indent]
+
+Speed, aka "Rogue Set"
+[indent]Slot 6: Rogue AY-1 - 3% agility bonus, Cyber 1 - 22m
+Slot 7: Rogue CY-1 - 3% speed bonus, Cyber 1 - 22m
+Slot 8: Rogue DY-1 - 3% afterburner cap need reduction, Cyber 2 - 1m
+Slot 9: Rogue GY-1 - 3% MWD cap need reduction, Cyber 2 - 11m
+Slot 10: Rogue MY-1 - 3% AB/MWD speed increase bonus, Cyber 3 - 24m[/indent]
+
+Hyperlink "Rogue set" - All of the above, minus the DY-1, plus Zor's
+[indent]Slot 8: Zor's Custom Navigation Hyper-Link - 5% afterburner/MWD speed boost bonus, Cyber 4 - 40m[/indent]
+[/indent]
+
+[b]Weird Shit[/b]
+There are some implants which are different from standard hardwirings. They often provide better bonuses in weird slot locations, don't show up on the market, are horrifically expensive and hard to find, and have confusing skill requirements. I'll list these here for completion's sake since you might not find out about them otherwise.
+  
+[indent]Slot 7: Michi's Excavation Augmentor - 5% mining laser yield bonus - ~550m, Cybernetics V
+Slot 7: Ogdin's Eye Coordination Enhancer - 6% turret tracking speed bonus - ~300m, Cybernetics III
+Slot 7: Shaqil's Speed Enhancer - 8% velocity bonus - ~900m, Cybernetics IV
+Slot 7: Zor's Custom Navigation Link - 10% afterburner duration bonus - ~20m, Cybernetics V
+Slot 8: Zor's Custom Navigation Hyper-Link - 5% afterburner/MWD speed boost bonus - See above, Cybernetics IV
+Slot 9: Pashan's Turret Customization Mindlink - 7% turret rate of fire bonus - ~1.1b, Cybernetics IV
+Slot 10: Pashan's Turret Handling Mindlink - 7% large energy turret damage bonus - ~600m
+Slot 10: Whelan Machorin's Ballistic Smartlink - 5% missile launcher ROF bonus - ~300m
+Slot 10: Akemon's Modified 'Noble' ZET5000 - 8% armor HP bonus - ~750m[/indent]
+
+
+Some implants that EFT lists simply don't seem to exist, sometimes in the market, sometimes in both market and contract. If it's a normal hardwiring and isn't in the market, I've never seen any in-stock in contracts. I haven't seen any capship-related implants, for example, and EFT lists quite a lot of those. I suspect they currently can't be acquired. There's also several weird named hardwirings that EFT lists that don't show up in contracts. I probably can't get those for you either, sorry.[/indent]
+
+[SIZE="4"]Special orders[/size]
+
+[indent]I'll cheerfully hop weird implants, skillbooks, blueprints, or any other small things down. My prices tend to be 20-30% higher than Jita prices, though I'll try to save you money when possible. Skillbooks probably aren't worth it unless you want them in bulk for some reason or don't have a jump clone (in which case, get a damn jump clone, it's not that hard.) Please ask for a price check before buying - if for some reason I can't honor a price check after I've given it, I'll let you know, but this should be incredibly rare. I'd much rather do a price check than have to resell something I bought intending to import.
+
+If you just say "I want a (expensive implant)" I'll assume that you're fine with my normal markup and bring one down. If you cancel after I've already bought the item I'll be annoyed at you :argh:[/indent]
