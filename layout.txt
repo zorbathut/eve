@@ -100,8 +100,8 @@ Slot 9
 [indent]Gunslinger CX-1 - 3% turret damage bonus, Cyber 2 - 30m
 Deadeye ZGA100 - 3% turret optimal range bonus, Cyber 2 - 3m
 Lancer G1-Delta - 3% turret ROF bonus, Cyber 2 - 24m
-Snapshot ZMN1000 - 3% standard missile damage bonus, Cyber 2 - 50m (very low availability)
-Snapshot ZMR1000 - 3% rocket damage bonus, Cyber 2 - 50m (very low availability)
+Snapshot ZMN1000 - 3% standard missile damage bonus, Cyber 2 - 50m
+Snapshot ZMR1000 - 3% rocket damage bonus, Cyber 2 - 50m
 Deadeye ZMS100 - 3% explosion velocity bonus, Cyber 4 - 18m
 Gnome KYA1000 - 3% shield recharge time reduction, Cyber 3 - 4m
 Noble ZET400 - 3% repair system amount bonus, Cyber 2 - 34m

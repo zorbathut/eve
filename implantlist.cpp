@@ -48,6 +48,8 @@ int main() {
     string lin;
     while(getline(ifs, lin)) {
       vector<string> v = tokenize(lin, " ");
+      if(!v.size())
+        continue;
       CHECK(v.size() == 2);
       CHECK(!pric.count(v[0]));
       pric[v[0]] = atof(v[1].c_str());

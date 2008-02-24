@@ -1,2 +1,86 @@
-PPH-1 12
-HX-2 150
+beancounter 0
+F50 18
+F60 110
+H50 30
+H60 175
+I50 13
+J50 45
+K50 16
+
+deadeye 0
+ZGA100 .8
+ZGC100 1.4
+ZGL100 24
+ZGM100 4
+ZGM1000 2.5
+ZGS100 .04
+ZGS1000 8
+ZMC100 6.2
+ZML100 13
+ZMM100 36
+ZMS100 13
+
+gnome 0
+KTA100 17.5
+KVA1000 5.2
+KYA1000 4.5
+KZA1000 2.25
+
+gunslinger 0
+AX-1 8.6
+CX-1 26
+LX-1 23
+MX-1 6.5
+MX-2 9.3
+SX-1 0.1
+
+gypsy 0
+KMB-50 25
+
+highwall 0
+HX-1 17
+HX-2 85
+
+lancer 0
+G1-Alpha 0.01
+G1-Beta 1.4
+G1-Delta 12
+G1-Epsilon 24.5
+G1-Gamma 0.8
+G2-Gamma 0.9
+
+noble 0
+ZET100 1.5
+ZET200 0.2
+ZET400 27.7
+ZET500 5.5
+
+prospector 0
+PPF-1 20
+PPG-1 35
+PPH-1 27
+PPY-1 30
+PPZ-1 35
+
+rogue 0
+AY-1 22
+CY-1 28
+DY-1 0.1
+GY-1 6.3
+MY-1 21.5
+
+snapshot 0
+ZME1000 20
+ZMH1000 25
+ZMN1000 60
+ZMR1000 60
+ZMT1000 23
+ZMU1000 25
+
+squire 0
+CC4 35
+CR4 40
+PG4 29
+
+zor's 0
+Custom 30
