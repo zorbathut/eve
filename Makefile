@@ -14,6 +14,9 @@ pather.exe: agentop/pather.o raw/dbo_mapSolarSystems.csv raw/dbo_mapSolarSystemJ
 implantlist.exe: implantlist.o
 	nice g++ -o $@ implantlist.o
 
+implantasset.exe: implantasset.o
+	nice g++ -o $@ implantasset.o
+
 agentop: agentop.exe
 	agentop.exe
 
@@ -22,3 +25,6 @@ download:
 
 implants: implantlist.exe
 	implantlist.exe
+
+assets: implantasset.exe
+	implantasset.exe
