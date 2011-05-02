@@ -62,9 +62,13 @@ int main() {
     ifstream ifs("layout.txt");
     string lin;
     
+    ofstream ofs("out.txt");
+    
     bool inside = false;
     
     while(getline(ifs, lin)) {
+      while(lin.size() && isspace(lin[lin.size() - 1]))
+        lin.erase(lin.end() - 1);
       if(lin == "[indent]")
         inside = true;
       else if(lin == "[/indent]")
@@ -78,9 +82,13 @@ int main() {
           impid = toki[1];
         else if(toki.size() >= 4 && pric.count(toki[3]))
           impid = toki[3];
+        else if(toki.size() >= 3 && pric.count(toki[2]))
+          impid = toki[2];
+        else if(toki.size() >= 1 && pric.count(toki[0]))
+          impid = toki[0];
         
         if(impid.size()) {
-          int cost = int(ceil(pric[impid] * 1.3));
+          int cost = int(ceil(pric[impid] * 1.4));
           char deep[20];
           sprintf(deep, "%dm", cost);
           
@@ -92,10 +100,14 @@ int main() {
           CHECK((toki.size() < 2 || isnotimplant(toki[1])) && (toki.size() < 4 || isnotimplant(toki[3])));
         }
         
-        for(int i = 0; i < toki.size(); i++)
+        for(int i = 0; i < toki.size(); i++) {
           printf("%s ", toki[i].c_str());
+          ofs << toki[i] << " ";
+        }
+        ofs << endl;
         printf("\n");
       } else {
+        ofs << lin << endl;
         printf("%s\n", lin.c_str());
       }
     }

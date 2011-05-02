@@ -31,20 +31,19 @@ vector<string> csv(const string &ins) {
 
 struct Desires {
   char ident[10];
-  int nc[4];
-  int c[4];
+  int nc[5];
+  int c[5];
 };
 
 const Desires des[] = {
-  { "KZF", {10, 6, 8, 6}, {10, 4, 5, 4} },
-  { "77S", {10, 6, 8, 6}, {10, 4, 5, 4} },
-  { "FAT", {10, 4, 6, 4}, {10, 3, 4, 3} },
-  { "319", {70, 8, 12, 6}, {70, 5, 7, 4} },
+  { "KZF", {10, 6, 8, 6, 0}, {10, 4, 5, 4, 0} },
+  { "77S", {10, 6, 8, 6, 0}, {10, 4, 5, 4, 0} },
+  { "319", {20, 8, 12, 6, 0}, {20, 5, 7, 4, 0} },
 };
 const int des_size = sizeof(des) / sizeof(*des);
 
 const char *impname[] = {"Cyb", "Mem", "Neu", "Ocu", "Soc"};
-const char *impadd[] = {"Limited", "Beta", "Basic", "Standard"};
+const char *impadd[] = {"Limited", "Beta", "Basic", "Standard", "Improved"};
 
 const int impname_size = sizeof(impname) / sizeof(*impname);
 const int impadd_size = sizeof(impadd) / sizeof(*impadd);
@@ -147,4 +146,37 @@ int main() {
     }
   }
   
+  int pric[5][2];
+  pric[0][0] = 670;
+  pric[0][1] = 75;
+  pric[1][0] = 14400;
+  pric[1][1] = 1200;
+  pric[2][0] = 30800;
+  pric[2][1] = 7600;
+  pric[3][0] = 68600;
+  pric[3][1] = 10800;
+  pric[4][0] = 384000;
+  pric[4][1] = 96000;
+  
+  for(int i = 0; i < des_size; i++) {
+    printf("Have %s:\n", des[i].ident);
+    int amount = 0;
+    for(int j = 0; j < impadd_size; j++) {
+      printf("  +%d:\n", j + 1);
+      int normc = 0;
+      int socc = 0;
+      for(int k = 0; k < impname_size; k++) {
+        printf("    %s: %d\n", impname[k], impcount[i][j][k]);
+        if(k != 4)
+          normc += impcount[i][j][k];
+        else
+          socc += impcount[i][j][k];
+      }
+      printf("    Price without cha: %dk\n", pric[j][0] * normc / 4);
+      printf("    Cha-only         : %dk\n", pric[j][1] * socc);
+      printf("    Total            : %dk\n", pric[j][0] * normc / 4 + pric[j][1] * socc);
+      amount += pric[j][0] * normc / 4 + pric[j][1] * socc;
+    }
+    printf("  Total for everything: %dk\n", amount);
+  }
 }
